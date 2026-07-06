@@ -27,6 +27,10 @@ exports.getEvents = async (req, res) => {
     query += ' ORDER BY e.created_at DESC';
 
     const [events] = await pool.query(query, params);
+    console.log('DB_NAME being used:', process.env.DB_NAME);
+    console.log('Query:', query);
+    console.log('Params:', params);
+    console.log('Rows returned:', events.length)
     res.json(events);
   } catch (err) {
     console.error(err);
