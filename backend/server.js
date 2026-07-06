@@ -9,7 +9,10 @@ const adminRoutes = require('./routes/admin');
 
 const app = express();
 
-app.use(cors({ origin: process.env.CLIENT_URL || '*' }));
+app.use(cors({
+  origin: process.env.CLIENT_URL,
+  credentials: true
+}));
 app.use(express.json({ limit: '2mb' }));
 
 app.get('/', (req, res) => res.json({ message: 'TicketSetu API is running' }));
